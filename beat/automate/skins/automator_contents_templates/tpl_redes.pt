@@ -1,0 +1,103 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+    <metal:block fill-slot="top_slot"
+           tal:define="dummy python:request.set('disable_border',1)" />
+
+
+    <metal:block metal:fill-slot="head_slot">
+    	<script type="text/javascript" language="javascript" src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    	<script type="text/javascript" language="javascript" src="//cdn.datatables.net/1.10.4/js/jquery.dataTables.min.js"></script>
+    	<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.4/css/jquery.dataTables.css">
+        <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+    </metal:block>
+
+<body>
+
+    <metal:main fill-slot="main">
+
+        <div metal:define-macro="main"
+            tal:define="hoje python:DateTime();
+                        r_data python:request.get('data') or hoje.strftime('%d/%m/%Y')">
+
+            <div style="float: right">
+                <input type="text" id="data" name="data" size="10" disabled="disabled" tal:attributes="value r_data">
+            </div>
+
+            <p class="titulo">Redes</p>
+
+            <table id="noticias" class="display compact" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th>Status</th>
+                        <th>Hora</th>
+                        <th>Tipo</th>
+                        <th>Título</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+
+                <tbody tal:define="solicitacoes python:context.getRedes(data=r_data);">
+                <tal:rep tal:repeat="solicitacao solicitacoes">
+                    <tr>
+                        <td><span tal:replace="solicitacao/review_state" /></td>
+                        <td><span tal:replace="python:DateTime(solicitacao.created).strftime('%H:%M')" /></td>
+                        <td><span tal:replace="solicitacao/Type" /></td>
+                        <td><a tal:attributes="href python:solicitacao.getURL()" tal:content="solicitacao/Title" /></td>
+                        <td><a tal:attributes="href python:solicitacao.getURL()+'/@@croppingeditor'"><img src="icone_crop.png" alt="Solicitar"></a></td>
+                        <td><a tal:attributes="href python:solicitacao.getURL()+'/content_status_modify?workflow_action=retornar'"><img src="icone_solicitar.png" alt="Solicitar"></a></td>
+                        <td><a tal:attributes="href python:solicitacao.getURL()+'/edit'"><img src="icone_editar.png" alt="Editar"></a></td>
+                        <td><a tal:attributes="href python:solicitacao.getURL()+'/delete_confirmation'"><img src="icone_excluir.png" alt="Excluir"></a></td>
+                    </tr>
+                </tal:rep>
+                </tbody>
+            </table>
+
+            <br />
+            <br />
+
+
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('#noticias').dataTable( {
+                    "paging":   false,
+                    "searching": false,
+                    "info":     false,
+                    "order": [[ 1, "desc" ]],
+                    "columns": [{ "width": "10%" },{ "width": "10%" },{ "width": "20%" },{ "width": "48%"},{ "width": "3%"},{ "width": "3%"},{ "width": "3%"},{ "width": "3%"}]
+                } );
+            } );
+
+            $(function() {
+                $( "#data" ).datepicker({
+                    changeMonth: true,
+                    numberOfMonths: 1,
+                    showOn: "button",
+                    buttonImage: "popup_calendar.gif",
+                    buttonImageOnly: true,
+                    buttonText: "Selecione",
+                    dateFormat: "dd/mm/yy",
+                    onClose: function( selectedDate ) {
+                        $( "#from" ).datepicker( "option", "maxDate", selectedDate );
+                        data = $( "#data" ).val()
+                        window.location = 'tpl_redes?data='+data;
+                    }
+                });
+            });
+        </script>
+
+    </metal:main>
+
+</body>
+</html>

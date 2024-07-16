@@ -1,0 +1,31 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+xmlns:tal="http://xml.zope.org/namespaces/tal"
+xmlns:metal="http://xml.zope.org/namespaces/metal"
+xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+i18n:domain="plone">
+
+<body>
+    <div metal:define-macro="portlet">
+
+        <div class="titulo-portlet">
+            <img tal:attributes="src string:${context/portal_url}/solicitar.png" />
+        </div>
+
+
+        <div class="botaoPortlet">
+            <a tal:attributes="href string:${context/portal_url}/redes/cards/createObject?type_name=Boletim">
+                Boletim Semanal
+            </a>
+        </div>
+
+        <div class="botaoPortlet">
+            <a tal:attributes="href string:${context/portal_url}/redes/cards/createObject?type_name=Nota">
+                Nota Técnica
+            </a>
+        </div>
+
+
+    </div>
+</body>
+
+</html>

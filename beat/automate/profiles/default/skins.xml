@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<object name="portal_skins" allow_any="False" cookie_persistence="False"
+   default_skin="Automate">
+
+ <object name="automator_skin_assets"
+    meta_type="Filesystem Directory View"
+    directory="beat.automate:skins/automator_skin_assets"/>
+ <object name="automator_skin_templates"
+    meta_type="Filesystem Directory View"
+    directory="beat.automate:skins/automator_skin_templates"/>
+ <object name="automator_contents_templates"
+    meta_type="Filesystem Directory View"
+    directory="beat.automate:skins/automator_contents_templates"/>
+
+ <skin-path name="Automate" based-on="Sunburst Theme">
+    <layer name="automator_skin_assets"
+        insert-after="custom"/>
+    <layer name="automator_skin_templates"
+        insert-after="automator_skin_assets"/>
+    <layer name="automator_contents_templates"
+        insert-after="automator_skin_templates"/>
+ </skin-path>
+
+</object>

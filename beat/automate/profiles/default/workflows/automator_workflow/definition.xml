@@ -1,0 +1,83 @@
+<?xml version="1.0"?>
+<dc-workflow workflow_id="automator_workflow" title="Automator Workflow" description="" state_variable="review_state" initial_state="solicitado" manager_bypass="False">
+ <permission>Access contents information</permission>
+ <permission>Modify portal content</permission>
+ <permission>View</permission>
+ <state state_id="finalizado" title="Finalizado">
+  <exit-transition transition_id="gerar"/>
+  <exit-transition transition_id="retornar"/>
+ </state>
+ <state state_id="gerando" title="Gerando">
+  <exit-transition transition_id="finalizar"/>
+  <exit-transition transition_id="retornar"/>
+ </state>
+ <state state_id="solicitado" title="Solicitado">
+  <exit-transition transition_id="finalizar"/>
+  <exit-transition transition_id="gerar"/>
+ </state>
+ <transition transition_id="finalizar" title="Finalizar" new_state="finalizado" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Finalizar</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="gerar" title="Gerar" new_state="gerando" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Gerar</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+  </guard>
+ </transition>
+ <transition transition_id="retornar" title="Retornar solicitação" new_state="solicitado" trigger="USER" before_script="" after_script="">
+  <action url="" category="workflow" icon="">Retornar solicitação</action>
+  <guard>
+   <guard-permission>Modify portal content</guard-permission>
+  </guard>
+ </transition>
+ <variable variable_id="action" for_catalog="False" for_status="True" update_always="True">
+  <description>Previous transition</description>
+  <default>
+
+   <expression>transition/getId|nothing</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="actor" for_catalog="False" for_status="True" update_always="True">
+  <description>The ID of the user who performed the last transition</description>
+  <default>
+
+   <expression>user/getId</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="comments" for_catalog="False" for_status="True" update_always="True">
+  <description>Comment about the last transition</description>
+  <default>
+
+   <expression>python:state_change.kwargs.get('comment', '')</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+ <variable variable_id="review_history" for_catalog="False" for_status="False" update_always="False">
+  <description>Provides access to workflow history</description>
+  <default>
+
+   <expression>state_change/getHistory</expression>
+  </default>
+  <guard>
+   <guard-permission>Request review</guard-permission>
+   <guard-permission>Review portal content</guard-permission>
+  </guard>
+ </variable>
+ <variable variable_id="time" for_catalog="False" for_status="True" update_always="True">
+  <description>When the previous transition was performed</description>
+  <default>
+
+   <expression>state_change/getDateTime</expression>
+  </default>
+  <guard>
+  </guard>
+ </variable>
+</dc-workflow>

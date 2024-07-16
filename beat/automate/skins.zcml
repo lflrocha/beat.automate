@@ -1,0 +1,12 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    i18n_domain="ebc.automator2023">
+
+  <!-- File System Directory Views registration -->
+  <cmf:registerDirectory name="automator_skin_assets"/>
+  <cmf:registerDirectory name="automator_skin_templates"/>
+  <cmf:registerDirectory name="automator_contents_templates"/>
+
+
+</configure>
