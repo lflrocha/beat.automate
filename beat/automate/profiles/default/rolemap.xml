@@ -2,6 +2,10 @@
 <rolemap>
   <permissions>
     <!-- -*- extra stuff goes here -*- -->
+    <permission name="beat.automate: Add Destaque" acquire="False">
+      <role name="Manager" />
+      <role name="Contributor" />
+    </permission>
     <permission name="beat.automate: Add Nota" acquire="False">
       <role name="Manager" />
       <role name="Contributor" />

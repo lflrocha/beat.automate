@@ -6,6 +6,12 @@
   <!-- configure your content components here -->
   
   <!-- -*- extra stuff goes here -*- -->
+  <class class=".destaque.Destaque">
+    <require
+        permission="zope2.View"
+        interface="..interfaces.IDestaque"
+        />
+  </class>
   <class class=".nota.Nota">
     <require
         permission="zope2.View"

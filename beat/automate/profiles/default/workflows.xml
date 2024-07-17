@@ -14,6 +14,9 @@
    <type type_id="Nota">
      <bound-workflow workflow_id="automator_workflow"/>
    </type>
+   <type type_id="Destaque">
+     <bound-workflow workflow_id="automator_workflow"/>
+   </type>
 
 
 
