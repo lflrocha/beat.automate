@@ -9,8 +9,7 @@
 ##
 
 tipos = [
-    'Boletim',
-    'Nota',
+    'CongressoProgramacao',
 ]
 
 solicitacoes = context.portal_catalog.searchResults(meta_type=tipos, sort_on="created", review_state="solicitado")

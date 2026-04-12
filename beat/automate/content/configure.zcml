@@ -4,24 +4,12 @@
     i18n_domain="beat.automate">
 
   <!-- configure your content components here -->
-  
+
   <!-- -*- extra stuff goes here -*- -->
-  <class class=".destaque.Destaque">
+  <class class=".congressoprogramacao.CongressoProgramacao">
     <require
         permission="zope2.View"
-        interface="..interfaces.IDestaque"
-        />
-  </class>
-  <class class=".nota.Nota">
-    <require
-        permission="zope2.View"
-        interface="..interfaces.INota"
-        />
-  </class>
-  <class class=".boletim.Boletim">
-    <require
-        permission="zope2.View"
-        interface="..interfaces.IBoletim"
+        interface="..interfaces.ICongressoProgramacao"
         />
   </class>
 

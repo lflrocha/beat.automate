@@ -13,9 +13,7 @@ data = DateTime(data,datefmt='international')
 fim = DateTime(data.strftime("%d/%m/%Y 23:59:59"),datefmt='international')
 
 tipos = [
-    'Boletim',
-    'Nota',
-    'Destaque'
+    'CongressoProgramacao',
 ]
 
 folder_path = '/'.join(context.getPhysicalPath())

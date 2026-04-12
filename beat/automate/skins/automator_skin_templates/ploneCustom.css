@@ -163,6 +163,15 @@ ul.submenu {
 
 
 
+#portal-globalnav {
+  display: flex;
+  justify-content: center; /* centraliza os li horizontalmente */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+
 
 /* ESTRUTURA PRINCIPAL */
 

@@ -30,7 +30,7 @@
                 <input type="text" id="data" name="data" size="10" disabled="disabled" tal:attributes="value r_data">
             </div>
 
-            <p class="titulo">Redes</p>
+            <p class="titulo">Congresso - Programação</p>
 
             <table id="noticias" class="display compact" cellspacing="0" width="100%">
                 <thead>
@@ -46,14 +46,15 @@
                     </tr>
                 </thead>
 
-                <tbody tal:define="solicitacoes python:context.getRedes(data=r_data);">
+                <tbody tal:define="solicitacoes python:context.getCongresso(data=r_data);">
                 <tal:rep tal:repeat="solicitacao solicitacoes">
                     <tr>
                         <td><span tal:replace="solicitacao/review_state" /></td>
                         <td><span tal:replace="python:DateTime(solicitacao.created).strftime('%H:%M')" /></td>
                         <td><span tal:replace="solicitacao/Type" /></td>
                         <td><a tal:attributes="href python:solicitacao.getURL()" tal:content="solicitacao/Title" /></td>
-                        <td><a tal:attributes="href python:solicitacao.getURL()+'/@@croppingeditor'"><img src="icone_crop.png" alt="Solicitar"></a></td>
+                        <td></td>
+                        <!-- <td><a tal:attributes="href python:solicitacao.getURL()+'/@@croppingeditor'" tal:condition=""><img src="icone_crop.png" alt="Solicitar"></a></td> -->
                         <td><a tal:attributes="href python:solicitacao.getURL()+'/content_status_modify?workflow_action=retornar'"><img src="icone_solicitar.png" alt="Solicitar"></a></td>
                         <td><a tal:attributes="href python:solicitacao.getURL()+'/edit'"><img src="icone_editar.png" alt="Editar"></a></td>
                         <td><a tal:attributes="href python:solicitacao.getURL()+'/delete_confirmation'"><img src="icone_excluir.png" alt="Excluir"></a></td>

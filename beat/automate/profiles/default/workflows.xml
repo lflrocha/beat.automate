@@ -7,6 +7,9 @@
 
  <bindings>
 
+   <type type_id="Congresso Programacao">
+     <bound-workflow workflow_id="automator_workflow"/>
+   </type>
 
    <type type_id="Boletim">
      <bound-workflow workflow_id="automator_workflow"/>
@@ -15,6 +18,9 @@
      <bound-workflow workflow_id="automator_workflow"/>
    </type>
    <type type_id="Destaque">
+     <bound-workflow workflow_id="automator_workflow"/>
+   </type>
+   <type type_id="Programacao">
      <bound-workflow workflow_id="automator_workflow"/>
    </type>
 
