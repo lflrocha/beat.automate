@@ -13,7 +13,7 @@ i18n:domain="plone">
 
 
         <div class="botaoPortlet">
-            <a tal:attributes="href string:${context/portal_url}/congresso/createObject?type_name=Congresso+Programacao">
+            <a tal:attributes="href string:${context/portal_url}/congresso/programacao/createObject?type_name=Congresso+Programacao">
                 Programação
             </a>
         </div>
