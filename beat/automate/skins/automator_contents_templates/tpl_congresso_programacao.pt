@@ -92,7 +92,7 @@
                     onClose: function( selectedDate ) {
                         $( "#from" ).datepicker( "option", "maxDate", selectedDate );
                         data = $( "#data" ).val()
-                        window.location = 'tpl_redes?data='+data;
+                        window.location = 'tpl_congresso_programacao?data='+data;
                     }
                 });
             });
